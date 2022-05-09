@@ -12,26 +12,30 @@ int is_palindrome(listint_t **head)
 	const listint_t *forward = *head;
 	int list[20];
 
-	while (forward != NULL)
+	if (head)
 	{
-		list[i] = forward->n;
-		forward = forward->next;
-		i++;
-	}
-	i--;
-	
-	if (i < 2)
-		return (1);
-
-	if (i > 1)
-	{
-		for (j = 0; j <= i; j++)
+		while (forward != NULL)
 		{
-			if (list[j] != list[i])
-				return (0);
-			else
-				i--;
+			list[i] = forward->n;
+			forward = forward->next;
+			i++;
 		}
+		i--;
+		
+		if (i < 2)
+			return (1);
+
+		if (i > 1)
+		{
+			for (j = 0; j <= i; j++)
+			{
+				if (list[j] != list[i])
+					return (0);
+				else
+					i--;
+			}
+		}
+		return (1);
 	}
 	return (1);
 }
