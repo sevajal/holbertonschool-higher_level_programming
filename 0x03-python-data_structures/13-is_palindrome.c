@@ -8,7 +8,7 @@
 
 int is_palindrome(listint_t **head)
 {
-	unsigned int i, nodes;
+	unsigned int i, nodes, half;
 	const listint_t *forward = *head;
 	const listint_t *back = *head;
 
@@ -19,6 +19,7 @@ int is_palindrome(listint_t **head)
 		nodes++;
 	}
 	nodes--;
+	half = nodes / 2;
 	forward = *head;
 
 	if (nodes < 2)
@@ -26,7 +27,7 @@ int is_palindrome(listint_t **head)
 
 	if (nodes > 1)
 	{
-		while (nodes)
+		while (nodes > half)
 		{
 			for (i = 0; i < nodes; i++)
 				back = back->next;
