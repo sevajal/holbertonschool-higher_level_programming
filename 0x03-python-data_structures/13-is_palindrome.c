@@ -22,7 +22,7 @@ int is_palindrome(listint_t **head)
 		}
 		i--;
 		
-		if (i < 2)
+		if (forward == NULL || forward->next == NULL)
 			return (1);
 
 		if (i > 1)
