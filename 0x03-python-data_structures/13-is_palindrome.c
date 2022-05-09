@@ -24,15 +24,7 @@ int is_palindrome(listint_t **head)
 	if (nodes < 2)
 		return (1);
 
-	if (nodes == 2)
-	{
-		if (forward->n == forward->next->n)
-			return (1);
-		else
-			return (0);
-	}
-
-	if (nodes > 2)
+	if (nodes > 1)
 	{
 		while (nodes)
 		{
