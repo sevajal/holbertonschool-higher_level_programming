@@ -12,6 +12,9 @@ int is_palindrome(listint_t **head)
 	const listint_t *forward = *head;
 	int list[1024];
 
+	if (forward == NULL)
+		return (1);
+
 	while (forward != NULL)
 		{
 			list[i] = forward->n;
@@ -20,7 +23,7 @@ int is_palindrome(listint_t **head)
 		}
 		i--;
 		
-		if (i < 2 || forward == NULL)
+		if (i == 1)
 			return (1);
 
 		if (i > 1)
