@@ -10,7 +10,7 @@ int is_palindrome(listint_t **head)
 {
 	unsigned int i = 0, j = 0;
 	const listint_t *forward = *head;
-	int list[20];
+	int list[1024];
 
 	if (head)
 	{
