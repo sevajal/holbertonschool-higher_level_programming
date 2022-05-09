@@ -8,34 +8,29 @@
 
 int is_palindrome(listint_t **head)
 {
-	unsigned int i, nodes, half;
+	unsigned int i = 0, j = 0;
 	const listint_t *forward = *head;
-	const listint_t *back = *head;
+	int list[20];
 
-	nodes = 0;
 	while (forward != NULL)
 	{
+		list[i] = forward->n;
 		forward = forward->next;
-		nodes++;
+		i++;
 	}
-	nodes--;
-	half = nodes / 2;
-	forward = *head;
-
-	if (nodes < 2)
+	i--;
+	
+	if (i < 2)
 		return (1);
 
-	if (nodes > 1)
+	if (i > 1)
 	{
-		while (nodes > half)
+		for (j = 0; j <= i; j++)
 		{
-			for (i = 0; i < nodes; i++)
-				back = back->next;
-			if (forward->n != back->n)
+			if (list[j] != list[i])
 				return (0);
-			forward = forward->next;
-			back = *head;
-			nodes--;
+			else
+				i--;
 		}
 	}
 	return (1);
