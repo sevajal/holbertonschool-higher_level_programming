@@ -10,16 +10,8 @@ class Square:
         """__init__ constructor method: creates a square object.
         args: size - size of the square.
         position - position of the square"""
-        if type(size) != int:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        if type(position) != tuple or len(position) != 2 \
-                or type(position[0]) != int or type(position[1]) != int \
-                or position[0] < 0 or position[1] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """Return the square area"""
