@@ -28,7 +28,7 @@ class Square:
         """ prints in stdout the square with the character #"""
         if self.__size > 0:
             if self.__position[1] > 0:
-                print()
+                print(self.__position[1] * "\n", end="")
             i = 0
             while i < self.__size:
                 x = 0
