@@ -1,0 +1,101 @@
+This is the test to test my function: text_indentation(text)
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test for correct answers:
+
+    >>> text_indentation("Hola: como estás hoy? Espero que muy bien. Que me cuentas.")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas.
+    <BLANKLINE>
+    >>> text_indentation("Hola: como estás hoy? Espero que muy bien. Que me cuentas?")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas?
+    <BLANKLINE>
+    >>> text_indentation("Hola: como estás hoy? Espero que muy bien. Que me cuentas:")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas:
+    <BLANKLINE>
+    >>> text_indentation("Hola: como estás hoy? Espero que muy bien. Que me cuentas.      ")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas.
+    <BLANKLINE>
+    >>> text_indentation("Hola: como estás hoy? Espero que muy bien.\nQue me cuentas.      ")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas.
+    <BLANKLINE>
+    >>> text_indentation("Hola:: como estás hoy? Espero que muy bien. Que me cuentas.")
+    Hola:
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas.
+    <BLANKLINE>
+    >>> text_indentation("Hola... como estás hoy? Espero que muy bien. Que me cuentas.")
+    Hola.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas.
+    <BLANKLINE>
+    >>> text_indentation("Hola: como estás hoy? Espero que muy bien. Que me cuentas")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas
+    >>> text_indentation("Hola:      como estás hoy? Espero que muy bien.     Que me cuentas    ")
+    Hola:
+    <BLANKLINE>
+    como estás hoy?
+    <BLANKLINE>
+    Espero que muy bien.
+    <BLANKLINE>
+    Que me cuentas
+
+    Test for errors:
+    >>> text_indentation(1020)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+    >>> text_indentation(["hola: como estás?"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
