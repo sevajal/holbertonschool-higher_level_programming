@@ -40,9 +40,9 @@ Test for matrix:
     >>> print(matrix_divided([[2, 4], [6, "8"]], 1))
     Traceback (most recent call last):
     ...
-    TypeError: matrix must be a matrix (list of lists)                 of integers/floats
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
     >>> print(matrix_divided([[2, 4], [6, 8], [10, 12]], 1))
-    [[2.0, 4.0], [6.0, 8.0]]
+    [[2.0, 4.0], [6.0, 8.0], [10.0, 12.0]]
     >>> print(matrix_divided([[1.3689, 2.890], [2, -9.338998]], 1))
     [[1.37, 2.89], [2.0, -9.34]]
     >>> print(matrix_divided([[0], [-0.00000]], 1))
@@ -50,5 +50,14 @@ Test for matrix:
     >>> print(matrix_divided([[None], [None]], 1))
     Traceback (most recent call last):
     ...
-    TypeError: matrix must be a matrix (list of lists)                 of integers/floats
-
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+    >>> print(matrix_divided([[], []], 2))
+    [[], []]
+    >>> print(matrix_divided([], 10))
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+    >>> print(matrix_divided(["Holberton", [1, 2, 3, 4, 5, 6, 8, 9, 10]], 10))
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
