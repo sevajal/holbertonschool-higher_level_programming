@@ -89,6 +89,12 @@ Test for correct answers:
     Espero que muy bien.
     <BLANKLINE>
     Que me cuentas
+    >>> text_indentation("Hola")
+    Hola
+    >>> text_indentation("Hola?")
+    Hola?
+    <BLANKLINE>
+    >>> text_indentation("")
 
     Test for errors:
     >>> text_indentation(1020)
@@ -96,6 +102,10 @@ Test for correct answers:
     ...
     TypeError: text must be a string
     >>> text_indentation(["hola: como estás?"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+    >>> text_indentation(None)
     Traceback (most recent call last):
     ...
     TypeError: text must be a string

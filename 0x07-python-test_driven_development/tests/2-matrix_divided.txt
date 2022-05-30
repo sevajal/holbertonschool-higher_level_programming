@@ -52,7 +52,9 @@ Test for matrix:
     ...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
     >>> print(matrix_divided([[], []], 2))
-    [[], []]
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
     >>> print(matrix_divided([], 10))
     Traceback (most recent call last):
     ...
@@ -61,3 +63,9 @@ Test for matrix:
     Traceback (most recent call last):
     ...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
+    >>> print(matrix_divided([[1, 2]], 1))
+    [[1.0, 2.0]]
+    >>> print(matrix_divided([1, 2], 1)) ####???
+    Traceback (most recent call last):
+    ...
+    TypeError: object of type 'int' has no len()

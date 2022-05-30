@@ -11,9 +11,9 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    if type(matrix) is not list:
+    if not matrix or not matrix[0]:
         raise TypeError(e)
-    if len(matrix) == 0:
+    if type(matrix) is not list:
         raise TypeError(e)
     if not all([len(x) == len(matrix[0]) for x in matrix]):
         raise TypeError("Each row of the matrix must have the same size")
