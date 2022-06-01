@@ -26,3 +26,4 @@ class TestMaxInteger(unittest.TestCase):
         self.assertRaises(TypeError, max_integer, [1, 3, "5"])
         self.assertRaises(TypeError, max_integer, [1, 100, "h"])
         self.assertRaises(TypeError, max_integer, [1, 3, [5, 7]])
+        self.assertRaises(TypeError, max_integer, [1, 3, (5, 7)])
