@@ -22,6 +22,17 @@ Test for negative floats - Need to be treated has int:
     >>> add_integer(-3.4, 5.6)
     2
 
+Test for wrong floats:
+
+    >>> add_integer(float('inf'), 30)
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+    >>> add_integer(float('NaN'), 30)
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+
 Test for a error:
 
     >>> add_integer("3", 5.6)
@@ -44,10 +55,6 @@ Test for b error:
     Traceback (most recent call last):
     ...
     TypeError: b must be an integer
-    >>> add_integer(float('inf'), 30)
-    Traceback (most recent call last):
-    ...
-    OverflowError: cannot convert float infinity to integer
 
 Test for not b:
 
