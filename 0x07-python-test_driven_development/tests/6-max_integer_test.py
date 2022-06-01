@@ -4,6 +4,7 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
     """Class Test for max_integer([..])"""
     def test_max_integer(self):
@@ -18,6 +19,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer(["ha", "he", "hi", "ho", "hu"]), "hu")
         self.assertEqual(max_integer([[1], [2], [3]]), [3])
         self.assertEqual(max_integer([["a"], ["b"], ["c"]]), ["c"])
+        self.assertEqual(max_integer(), None)
 
     def test_type(self):
         """Test for wrong types"""
