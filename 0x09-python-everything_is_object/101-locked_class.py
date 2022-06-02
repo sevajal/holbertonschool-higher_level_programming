@@ -1,3 +1,8 @@
 #!/usr/bin/python3
-class LockedClass(object):
+
+"""Class to locked a class"""
+
+
+class LockedClass:
+    """Class to only accept changes in first_name"""
     __slots__ = 'first_name'
