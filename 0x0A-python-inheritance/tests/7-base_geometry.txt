@@ -1,0 +1,38 @@
+This is a test for the BaseGeometry class in order to check the method integer_validator.
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+	>>> bg.integer_validator("30", 20)
+
+Errors:
+    >>> bg.integer_validator("Zero", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: Zero must be greater than 0
+    >>> bg.integer_validator("Negative", -100)
+    Traceback (most recent call last):
+    ...
+    ValueError: Negative must be greater than 0
+    >>> bg.integer_validator("String", "hello")
+    Traceback (most recent call last):
+    ...
+    TypeError: String must be a int
+	>>> bg.integer_validator("None", None)
+	Traceback (most recent call last):
+	...
+	TypeError: None must be a int
+	>>> bg.integer_validator("Float", 4.67)
+	Traceback (most recent call last):
+	...
+	TypeError: Float must be a int
+	>>> bg.integer_validator("Nothing")
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+	>>> bg.integer_validator(hi, 20)
+	Traceback (most recent call last):
+	...
+	NameError: name 'hi' is not defined
+
