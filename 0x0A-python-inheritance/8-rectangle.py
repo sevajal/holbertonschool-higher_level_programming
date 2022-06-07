@@ -16,7 +16,6 @@ class BaseGeometry:
             raise TypeError(f"{name} must be a int")
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
-        self.value = value
 
 
 """BaseGeometry class"""
