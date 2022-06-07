@@ -18,15 +18,15 @@ Errors:
     >>> bg.integer_validator("String", "hello")
     Traceback (most recent call last):
     ...
-    TypeError: String must be a int
+    TypeError: String must be an integer
 	>>> bg.integer_validator("None", None)
 	Traceback (most recent call last):
 	...
-	TypeError: None must be a int
+	TypeError: None must be an integer
 	>>> bg.integer_validator("Float", 4.67)
 	Traceback (most recent call last):
 	...
-	TypeError: Float must be a int
+	TypeError: Float must be an integer
 	>>> bg.integer_validator("Nothing")
 	Traceback (most recent call last):
 	...
