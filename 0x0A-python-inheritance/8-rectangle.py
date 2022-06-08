@@ -19,7 +19,7 @@ class BaseGeometry:
         return (value)
 
 
-"""BaseGeometry class"""
+"""Rectangle class"""
 
 
 class Rectangle(BaseGeometry):
