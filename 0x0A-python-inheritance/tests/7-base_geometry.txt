@@ -6,6 +6,7 @@ This is a test for the BaseGeometry class in order to check the method integer_v
     >>> bg.integer_validator("width", 89)
 	>>> bg.integer_validator("30", 20)
 	>>> bg.integer_validator("my_int", 12590398)
+	>>> bg.integer_validator("my_int", (2))
 
 Errors:
 	>>> bg.integer_validator("name", "John")
@@ -68,3 +69,4 @@ Errors:
 	Traceback (most recent call last):
 	...
 	TypeError: my_int must be an integer
+	
