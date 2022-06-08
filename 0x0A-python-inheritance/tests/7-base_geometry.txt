@@ -8,6 +8,10 @@ This is a test for the BaseGeometry class in order to check the method integer_v
 	>>> bg.integer_validator("my_int", 12590398)
 
 Errors:
+	>>> bg.integer_validator("name", "John")
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
     >>> bg.integer_validator("Zero", 0)
     Traceback (most recent call last):
     ...
@@ -28,6 +32,14 @@ Errors:
 	Traceback (most recent call last):
 	...
 	TypeError: Float must be an integer
+	>>> bg.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+	>>> bg.integer_validator(None)
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
 	>>> bg.integer_validator("Nothing")
 	Traceback (most recent call last):
 	...
