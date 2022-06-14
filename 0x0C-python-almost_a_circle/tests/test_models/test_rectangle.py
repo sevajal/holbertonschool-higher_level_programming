@@ -24,8 +24,13 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(r2.id, 12)
 
     def test_setters(self):
-        self.assertRaises(TypeError, Rectangle, (10, "2"))
-        self.assertRaises(TypeError, Rectangle, (10, 8, "3"))
+        self.assertRaises(TypeError, Rectangle, 10, "2")
+        self.assertRaises(TypeError, Rectangle, 10, [2, 5])
+        self.assertRaises(TypeError, Rectangle, 10, (2, 5))
+        self.assertRaises(TypeError, Rectangle, 10.8, 2)
+        self.assertRaises(TypeError, Rectangle, 10, 8, "3")
+        self.assertRaises(TypeError, Rectangle, 10, 8, 3, 3.9)
+        self.assertRaises(ValueError, Rectangle, 0, 8)
         self.assertRaises(ValueError, Rectangle, 10, -8)
         self.assertRaises(ValueError, Rectangle, 10, 8, 0, -2)
         r = Rectangle(1, 1)
@@ -82,6 +87,10 @@ class Test_rectangle(unittest.TestCase):
 
         r1_dict = Rectangle(10, 2, 1, 9).to_dictionary()
         dic2 = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        for key, value in r1_dict.items():
+            self.assertEqual(value, dic2[key])
+        r1_dict = Rectangle(2, 4, 0, 0, 99).to_dictionary()
+        dic2 = {'x': 0, 'y': 0, 'id': 99, 'height': 4, 'width': 2}
         for key, value in r1_dict.items():
             self.assertEqual(value, dic2[key])
 
