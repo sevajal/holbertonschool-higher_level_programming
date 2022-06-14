@@ -24,8 +24,12 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s2.id, 12)
 
     def test_setters(self):
-        self.assertRaises(TypeError, Square, ("2"))
-        self.assertRaises(TypeError, Square, (10, 8, "3"))
+        self.assertRaises(TypeError, Square, "2")
+        self.assertRaises(TypeError, Square, None)
+        self.assertRaises(TypeError, Square, 2.5)
+        self.assertRaises(TypeError, Square, [2, 5])
+        self.assertRaises(TypeError, Square, 10, 8, "3")
+        self.assertRaises(ValueError, Square, 0)
         self.assertRaises(ValueError, Square, -10)
         self.assertRaises(ValueError, Square, 10, -3, 0)
         s = Square(5)

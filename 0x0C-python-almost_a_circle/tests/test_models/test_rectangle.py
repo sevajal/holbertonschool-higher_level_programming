@@ -25,6 +25,7 @@ class Test_rectangle(unittest.TestCase):
 
     def test_setters(self):
         self.assertRaises(TypeError, Rectangle, 10, "2")
+        self.assertRaises(TypeError, Rectangle, None)
         self.assertRaises(TypeError, Rectangle, 10, [2, 5])
         self.assertRaises(TypeError, Rectangle, 10, (2, 5))
         self.assertRaises(TypeError, Rectangle, 10.8, 2)
