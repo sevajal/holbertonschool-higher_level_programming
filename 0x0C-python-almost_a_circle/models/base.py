@@ -34,7 +34,7 @@ class Base:
         """Method that writes the JSON string representation of
         list_objs to a file"""
         my_list = []
-        if list_objs is None:
+        if list_objs is None or list_objs == []:
             return my_list
         filename = cls.__name__ + ".json"
         for item in list_objs:
