@@ -30,9 +30,13 @@ class Test_square(unittest.TestCase):
         self.assertRaises(TypeError, Square, 2.5)
         self.assertRaises(TypeError, Square, [2, 5])
         self.assertRaises(TypeError, Square, 10, 8, "3")
+        self.assertRaises(TypeError, Square, 10, 3.5, 3)
+        self.assertRaises(TypeError, Square, 1, 2, 3, 4, 5, 6)
+        self.assertRaises(TypeError, Square)
         self.assertRaises(ValueError, Square, 0)
         self.assertRaises(ValueError, Square, -10)
         self.assertRaises(ValueError, Square, 10, -3, 0)
+        self.assertRaises(ValueError, Square, 10, 3, -10)
         s = Square(5)
         s.size = 10
         self.assertEqual(s.size, 10)
@@ -94,9 +98,6 @@ class Test_square(unittest.TestCase):
         s1 = Square(7)
         self.assertEqual(True, isinstance(s1, Base))
         self.assertEqual(True, isinstance(s1, Rectangle))
-
-    def test_bad_creation(self):
-        self.assertRaises(TypeError, Square)
 
 if __name__ == '__main__':
     unittest.main()

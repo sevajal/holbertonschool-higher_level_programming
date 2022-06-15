@@ -25,15 +25,23 @@ class Test_rectangle(unittest.TestCase):
 
     def test_setters(self):
         self.assertRaises(TypeError, Rectangle, 10, "2")
+        self.assertRaises(TypeError, Rectangle, "10", 2)
         self.assertRaises(TypeError, Rectangle, None)
         self.assertRaises(TypeError, Rectangle, 10, [2, 5])
-        self.assertRaises(TypeError, Rectangle, 10, (2, 5))
+        self.assertRaises(TypeError, Rectangle, (2, 5), 10)
         self.assertRaises(TypeError, Rectangle, 10.8, 2)
-        self.assertRaises(TypeError, Rectangle, 10, 8, "3")
+        self.assertRaises(TypeError, Rectangle, 10, 2.5)
+        self.assertRaises(TypeError, Rectangle, 10, 8, "3", 5)
         self.assertRaises(TypeError, Rectangle, 10, 8, 3, 3.9)
+        self.assertRaises(TypeError, Rectangle)
+        self.assertRaises(TypeError, Rectangle, 5)
+        self.assertRaises(TypeError, Rectangle, 1, 2, 3, 4, 5, 6, 7)
         self.assertRaises(ValueError, Rectangle, 0, 8)
+        self.assertRaises(ValueError, Rectangle, 7, 0)
         self.assertRaises(ValueError, Rectangle, 10, -8)
+        self.assertRaises(ValueError, Rectangle, -10, 8)
         self.assertRaises(ValueError, Rectangle, 10, 8, 0, -2)
+        self.assertRaises(ValueError, Rectangle, 10, 8, -9, 2)  
         r = Rectangle(1, 1)
         r.width = 10
         self.assertEqual(r.width, 10)
@@ -97,11 +105,7 @@ class Test_rectangle(unittest.TestCase):
     
     def test_inheritance(self):
         r1 = Rectangle(7, 10)
-        self.assertEqual(True, isinstance(r1, Base))
-
-    def test_bad_creation(self):
-        self.assertRaises(TypeError, Rectangle)
-        self.assertRaises(TypeError, Rectangle, 5)
+        self.assertEqual(True, isinstance(r1, Base))        
 
 if __name__ == '__main__':
     unittest.main()
