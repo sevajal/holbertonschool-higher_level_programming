@@ -36,6 +36,10 @@ class Test_base(unittest.TestCase):
         self.assertEqual(b8.id, 0)
         b9 = Base("hi")
         self.assertEqual(b9.id, "hi")
+        b10 = Base([2, 4])
+        self.assertEqual(b10.id, [2, 4])
+        b10 = Base((2, 4))
+        self.assertEqual(b10.id, (2, 4))
 
     def test_to_json_string(self):
         output = io.StringIO()
