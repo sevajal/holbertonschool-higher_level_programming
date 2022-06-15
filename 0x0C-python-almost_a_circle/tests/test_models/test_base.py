@@ -7,6 +7,7 @@ import io
 import sys
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 class Test_base(unittest.TestCase):
     """Class Test for base models"""
@@ -29,6 +30,12 @@ class Test_base(unittest.TestCase):
         self.assertEqual(b5.id, -15)
         b6 = Base(3.5)
         self.assertEqual(b6.id, 3.5)
+        b7 = Base(None)
+        self.assertEqual(b7.id, 3)
+        b8 = Base(0)
+        self.assertEqual(b8.id, 0)
+        b9 = Base("hi")
+        self.assertEqual(b9.id, "hi")
 
     def test_to_json_string(self):
         output = io.StringIO()
@@ -36,6 +43,16 @@ class Test_base(unittest.TestCase):
         json_dictionary = Base.to_json_string(None)
         print(json_dictionary)
         self.assertEqual(output.getvalue(), "[]\n")
+        dic1 = {"x": 10, "width": 5, "id": 2, "height": 9, "y": 0}
+        dic2 = {"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}
+        my_string = Base.to_json_string([dic1, dic2])
+        dictionary = Base.from_json_string(my_string)
+        self.assertEqual(dictionary, [dic1, dic2])
+        s1 = {"x": 10, "size": 4, "id": 2, "y": 0}
+        s2 = {"x": 2, "size": 10, "id": 1, "y": 8}
+        my_string = Base.to_json_string([s1, s2])
+        dictionary = Base.from_json_string(my_string)
+        self.assertEqual(dictionary, [s1, s2])
 
     def test_save_to_file(self):
         output = io.StringIO()
@@ -44,11 +61,24 @@ class Test_base(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             print(file.read())
         self.assertEqual(output.getvalue(), "[]\n")
+        output = io.StringIO()
+        sys.stdout = output
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            print(file.read())
+        self.assertEqual(output.getvalue(), "[]\n")
+        r1 = {"x": 10, "width": 5, "id": 2, "height": 9, "y": 0}
+        r2 = {"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}
 
     def test_from_json_string(self):
         output = io.StringIO()
         sys.stdout = output
         list_output = Rectangle.from_json_string(None)
+        print("[{}] {}".format(type(list_output), list_output))
+        self.assertEqual(output.getvalue(), "[<class 'list'>] []\n")
+        output = io.StringIO()
+        sys.stdout = output
+        list_output = Square.from_json_string(None)
         print("[{}] {}".format(type(list_output), list_output))
         self.assertEqual(output.getvalue(), "[<class 'list'>] []\n")
 
