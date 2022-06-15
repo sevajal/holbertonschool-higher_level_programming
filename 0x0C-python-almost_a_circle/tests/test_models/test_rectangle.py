@@ -94,6 +94,14 @@ class Test_rectangle(unittest.TestCase):
         dic2 = {'x': 0, 'y': 0, 'id': 99, 'height': 4, 'width': 2}
         for key, value in r1_dict.items():
             self.assertEqual(value, dic2[key])
+    
+    def test_inheritance(self):
+        r1 = Rectangle(7, 10)
+        self.assertEqual(True, isinstance(r1, Base))
+
+    def test_bad_creation(self):
+        self.assertRaises(TypeError, Rectangle)
+        self.assertRaises(TypeError, Rectangle, 5)
 
 if __name__ == '__main__':
     unittest.main()

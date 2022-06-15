@@ -6,6 +6,7 @@ import unittest
 import io
 import sys
 from models.base import Base
+from models.rectangle import Rectangle
 from models.square import Square
 
 class Test_square(unittest.TestCase):
@@ -77,6 +78,25 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s1.size, 2)
         self.assertEqual(s1.x, 1)
         self.assertEqual(s1.y, 3)
+
+    def test_to_dictionary(self):
+
+        s1_dict = Square(10, 1, 9).to_dictionary()
+        dic2 = {'x': 1, 'y': 9, 'id': 1, 'size': 10}
+        for key, value in s1_dict.items():
+            self.assertEqual(value, dic2[key])
+        s1_dict = Square(2, 0, 0, 99).to_dictionary()
+        dic2 = {'x': 0, 'y': 0, 'id': 99, 'size': 2}
+        for key, value in s1_dict.items():
+            self.assertEqual(value, dic2[key])
+
+    def test_inheritance(self):
+        s1 = Square(7)
+        self.assertEqual(True, isinstance(s1, Base))
+        self.assertEqual(True, isinstance(s1, Rectangle))
+
+    def test_bad_creation(self):
+        self.assertRaises(TypeError, Square)
 
 if __name__ == '__main__':
     unittest.main()

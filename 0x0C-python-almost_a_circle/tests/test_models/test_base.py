@@ -90,6 +90,12 @@ class Test_base(unittest.TestCase):
         r2 = Rectangle.create(**r1_dictionary)
         print(r2)
         self.assertEqual(output.getvalue(), "[Rectangle] (1) 1/0 - 3/5\n")
+        self.assertFalse(r1 is r2)
+        s1 = Square(3)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertEqual(str(s1), str(s2))
+        self.assertFalse(s1 is s2)
 
     def test_load_from_file(self):
         output = io.StringIO()
@@ -97,6 +103,20 @@ class Test_base(unittest.TestCase):
         list_rectangles_output = Rectangle.load_from_file()
         print(list_rectangles_output)
         self.assertEqual(output.getvalue(), "[]\n")
+        input = [Rectangle(4, 5), Rectangle(2, 3)]
+        Rectangle.save_to_file(input)
+        output = Rectangle.load_from_file()
+        i = 0
+        for item in output:
+            self.assertEqual(str(item), str(input[i]))
+            i += 1
+        input = [Square(4), Square(2)]
+        Square.save_to_file(input)
+        output = Square.load_from_file()
+        i = 0
+        for item in output:
+            self.assertEqual(str(item), str(input[i]))
+            i += 1
 
 if __name__ == '__main__':
     unittest.main()
