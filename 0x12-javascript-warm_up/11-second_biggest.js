@@ -6,7 +6,7 @@ if (args.length <= 3) {
 }
 if (args.length > 3) {
   args.splice(0, 2);
-  args.sort();
-  args.reverse();
-  console.log(args[1]);
+  const newArgs = args.map(Number);
+  newArgs.sort(function (a, b) { return b - a; });
+  console.log(newArgs[1]);
 }
