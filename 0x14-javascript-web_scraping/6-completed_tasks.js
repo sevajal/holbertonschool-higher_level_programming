@@ -2,13 +2,14 @@
 const axios = require('axios').default;
 const result = {};
 axios.get(process.argv[2])
-  .then(function (response) {
-    for (let i = 0; response.data[i]; i++) {
-      if (response.data[i].completed === true) {
-        if (!result[response.data[i].userId]) {
-          result[response.data[i].userId] = 1;
+  .then((response) => {
+    const tasks = response.data;
+    for (const task of tasks) {
+      if (task.completed) {
+        if (!result[task.userId]) {
+          result[task.userId] = 1;
         } else {
-          result[response.data[i].userId] += 1;
+          result[task.userId]++;
         }
       }
     }
