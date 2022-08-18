@@ -3,13 +3,15 @@ const axios = require('axios').default;
 
 const id = process.argv[2];
 axios.get(`https://swapi-api.hbtn.io/api/films/${id}`)
-  .then(function (response) {
-    for (let i = 0; response.data.characters[i]; i++) {
-      axios.get(response.data.characters[i])
-        .then(function (swcharacters) {
-          console.log(swcharacters.data.name);
-        });
+  .then((response) => {
+    const characters = response.data.characters;
+    async function getCharacters () {
+      for (const character of characters) {
+        const swcharacters = await axios.get(character);
+        console.log(swcharacters.data.name);
+      }
     }
+    getCharacters();
   })
   .catch(function (error) {
     console.log(error);
