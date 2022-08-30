@@ -15,6 +15,6 @@ if __name__ == "__main__":
                        pool_pre_ping=True)
     Base.metadata.create_all(en)
     session = Session(en)
-    state1 = session.query(State).order_by(State.id).all()[0]
+    state1 = session.query(State).order_by(State.id)[0]
     print("{}: {}".format(state1.id, state1.name))
     session.close()
