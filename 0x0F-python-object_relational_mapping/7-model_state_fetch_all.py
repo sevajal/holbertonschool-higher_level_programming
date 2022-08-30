@@ -7,10 +7,10 @@ from model_state import Base, State
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import Session
 
-a1 = sys.argv[1]
-a2 = sys.argv[2]
-a3 = sys.argv[3]
 if __name__ == "__main__":
+    a1 = sys.argv[1]
+    a2 = sys.argv[2]
+    a3 = sys.argv[3]
     en = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(a1, a2, a3),
                        pool_pre_ping=True)
     Base.metadata.create_all(en)
