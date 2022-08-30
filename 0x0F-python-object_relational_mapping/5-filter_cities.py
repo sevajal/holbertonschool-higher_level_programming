@@ -19,5 +19,7 @@ if __name__ == "__main__":
         for row in query_rows[0:-1]:
             print("%s, " % row, end='')
         print("%s" % query_rows[-1])
+    else:
+        print()
     cur.close()
     conn.close()
