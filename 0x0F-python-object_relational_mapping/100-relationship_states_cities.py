@@ -12,12 +12,13 @@ if __name__ == "__main__":
     a1 = sys.argv[1]
     a2 = sys.argv[2]
     a3 = sys.argv[3]
+    newCity = City(name="San Francisco")
     newState = State(name="California")
-    newCity = City(name="San Francisco", state_id=1)
+    newState.cities.append(newCity)
     en = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(a1, a2, a3),
                        pool_pre_ping=True)
     Base.metadata.create_all(en)
     session = Session(en)
-    session.add_all([newState, newCity])
+    session.add(newState)
     session.commit()
     session.close()
